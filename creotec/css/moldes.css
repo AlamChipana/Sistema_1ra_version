@@ -1,0 +1,419 @@
+
+:root {
+    --primary: #0077B6;
+    --dark: #03045E;
+    --light: #F4FBFC;
+    --border: #eaecf0;
+    --text-main: #101828;
+    --text-muted: #475467;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--light);
+    margin: 0;
+    padding: 24px;
+    color: var(--text-main);
+}
+
+/* Contenedor de botones centrado */
+.contenedor-acciones {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 20px;               /* Espacio entre botones */
+    margin-top: 10px;
+}
+
+/* Estilo base de los botones */
+.btn-accion-form {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+
+/* Efecto al presionar (se hunde) */
+.btn-accion-form:active {
+    transform: scale(0.98);
+}
+
+/* Botón Buscar */
+.btn-buscar {
+    background-color: #0077B6;
+    color: white;
+}
+.btn-buscar:hover {
+    background-color: #023e8a;
+}
+
+/* Botón Guardar */
+.btn-guardar {
+    background-color: #03045E;
+    color: white;
+}
+.btn-guardar:hover {
+    background-color: #000000;
+}
+/* Botón Limpiar */
+.btn-limpiar {
+    background-color: #64748b; /* Gris azulado profesional */
+    color: white;
+}
+.btn-limpiar:hover {
+    background-color: #475569;
+}
+
+/* Contenedor principal */
+.contenedor-moldes, .contenedor-ficha-tecnica {
+    background-color: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Cabeceras */
+.cabecera-modulo {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.cabecera-modulo h2 {
+    color: var(--dark);
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Tabla Moderna (Estilo SaaS) */
+.tabla-moderna {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tabla-moderna th {
+    background-color: #f9fafb;
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.tabla-moderna td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+/* Ficha Técnica / Tabla de Medidas */
+.tabla-medidas {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.titulo-principal {
+    background-color: var(--dark);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+}
+
+.subtitulo-principal {
+    background-color: var(--primary);
+    color: white;
+    font-size: 13px;
+    padding: 10px;
+}
+
+
+/* ==========================================================================
+   BOTONES INTERACTIVOS EN LA CABECERA DE LA TABLA
+   ========================================================================== */
+
+/* Contenedores de las celdas de título */
+.cabecera-botones {
+    padding: 8px !important;
+    border: none !important;
+}
+.cabecera-botones.dark-bg { background-color: var(--dark); }
+.cabecera-botones.primary-bg { background-color: var(--primary); }
+
+/* Distribución de los botones en la cabecera */
+.contenedor-grid-cabecera {
+    display: grid;
+    gap: 8px;
+    width: 100%;
+}
+.contenedor-grid-cabecera.cuatro-columnas { grid-template-columns: repeat(4, 1fr); }
+.contenedor-grid-cabecera.tres-columnas { grid-template-columns: repeat(3, 1fr); }
+
+/* Botón base apagado (Combina de fondo con la barra) */
+.btn-cabecera-sel {
+    display: block;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1); /* Blanco semitransparente sutil */
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+/* Ocultar el botón circular de radio por defecto */
+.btn-cabecera-sel input {
+    display: none;
+}
+
+/* Hover suave en los botones de cabecera */
+.btn-cabecera-sel:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* ESTADO SELECCIONADO (Mano / Paciente / etc. Activo) */
+.btn-cabecera-sel:has(input:checked) {
+    background-color: #ffffff !important; /* Resalta en blanco total limpio */
+    color: var(--dark) !important;       /* El texto adopta el azul de Creotec */
+    border-color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* ==========================================================================
+   CASILLA EXCLUSIVA PARA EL CÓDIGO DEL MOLDE EN LA CABECERA
+   ========================================================================== */
+
+/* Alineación interna del bloque de Código */
+.contenedor-codigo-molde {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+    padding: 0 5px;
+}
+
+/* Estilo de la palabra CÓDIGO */
+.contenedor-codigo-molde .label-codigo {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Caja de texto blanca destacada en la cabecera */
+.input-codigo-cabecera {
+    flex-grow: 1;
+    max-width: 190px; /* Tamaño ideal para que no sea gigante ni muy chica */
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--dark); /* Texto color azul oscuro de Creotec */
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase; /* Todo lo que escriban se forzará a mayúsculas automáticamente */
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Efecto cuando el usuario hace clic para escribir el código */
+.input-codigo-cabecera:focus {
+    background-color: var(--light); /* Fondo celeste sutil */
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4); /* Resplandor blanco exterior */
+}
+
+
+
+/* ==========================================================================
+   INPUTS DE MEDIDA (Modificado para que sean visibles)
+   ========================================================================== */
+.input-medida {
+    width: 100%;
+    box-sizing: border-box; /* Evita que el input se salga de la celda */
+    padding: 8px;
+    border: 1px solid #cbd5e1; /* Borde gris claro pero muy notorio */
+    border-radius: 4px; /* Esquinas sutilmente redondeadas */
+    background-color: #ffffff; /* Fondo blanco para resaltar */
+    text-align: center;
+    color: var(--primary);
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+/* ==========================================================================
+   NUEVOS AJUSTES: ESPACIADO DE DATOS Y CENTRADO DE SUBTÍTULOS
+   ========================================================================== */
+
+/* Contenedor del bloque izquierdo de datos personales */
+.contenedor-datos-personales {
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px;
+    padding: 12px;
+}
+
+/* Alineación de cada fila (Texto + Input) */
+.campo-dato {
+    display: flex; 
+    align-items: center;
+    width: 100%;
+}
+
+/* Forzar que las etiquetas ocupen solo el espacio de su texto sin recortarse */
+.campo-dato .label-medida {
+    width: auto;
+    white-space: nowrap; /* Evita que el texto salte a dos líneas si es largo */
+    margin-right: 12px;  /* Espacio sutil de separación antes de la caja blanca */
+    text-align: left;
+}
+
+/* Forzar que el input rellene todo el espacio sobrante a la derecha */
+.campo-dato .input-medida {
+    flex-grow: 1;
+}
+
+/* Centrado riguroso de todos los subtítulos de medidas (Dedo, Largo, Perímetro, etc.) */
+.subtitulos-medidas td {
+    text-align: center !important;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+/* Cuando el usuario hace clic para escribir */
+.input-medida:focus {
+    background-color: #f0f9ff;
+    border: 1px solid var(--primary);
+    outline: none; /* Quita el borde azul por defecto del navegador */
+    box-shadow: 0 0 0 2px rgba(0, 119, 182, 0.2); /* Resplandor azul suave */
+}
+/* ========================================================================== */
+
+/* Píldoras de estado (Badges) */
+.badge-estado {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #ecfdf5;
+    color: #065f46;
+}
+
+/* Botones de acción */
+.btn-opciones {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-opciones:hover {
+    background-color: #f9fafb;
+    border-color: #d0d5dd;
+}
+
+/* Área de dibujo/imágenes */
+.area-dibujo {
+    height: 140px; /* Un poco más de altura para que respiren las imágenes */
+    vertical-align: middle;
+    text-align: center; /* Mantiene la imagen perfectamente al centro */
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+/* Control del tamaño de las imágenes */
+.img-esquema {
+    max-height: 400px; /* Límite de altura (haz este número más pequeño si las quieres aún más chicas) */
+    max-width: 90%;    /* Límite de ancho para que no toquen los bordes */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Evita que la imagen se deforme o se estire */
+}
+
+
+
+/* Colores de sección (Más suaves) */
+.seccion-verde { 
+    background-color: #f0fdf4; 
+    color: #166534; 
+    font-weight: bold; 
+    text-align: center; 
+}
+.seccion-azul { 
+    background-color: #eff6ff; 
+    color: #1e40af; 
+    font-weight: bold; 
+    text-align: center; 
+}
+.seccion-naranja { 
+    background-color: #fff7ed; 
+    color: #9a3412; 
+    font-weight: bold; 
+    text-align: center; 
+}
+
+/* Ajuste de celdas */
+.fila-medida td {
+    height: 45px;
+    padding: 4px; /* Un poco de espacio alrededor del input en las celdas */
+}
+
+/* Botones de selección múltiple (Contextura física) */
+.btn-seleccion {
+    display: block;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475467;
+    transition: all 0.2s ease;
+}
+
+/* Ocultar el checkbox real */
+.btn-seleccion input {
+    display: none;
+}
+
+/* Estilo cuando cualquiera de los dos esté seleccionado */
+.btn-seleccion:has(input:checked) {
+    background-color: #0077B6; /* Azul Creotec */
+    color: white;
+    border-color: #03045E;
+}
+
+/* Estilo cuando el usuario hace clic (se selecciona) */
+.btn-seleccion:has(input:checked) {
+    background-color: #0077B6; /* Azul Creotec */
+    color: white;
+    border-color: #03045E;
+}
+
+/* Hover suave */
+.btn-seleccion:hover {
+    background-color: #e2e8f0;
+}

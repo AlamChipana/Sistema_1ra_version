@@ -1,0 +1,161 @@
+
+/* 1. Contenedor del Dashboard (El padre que da el espacio) */
+.dashboard {
+    /* ... lo que ya tenías ... */
+    padding: 10px 24px; /* Ajusta el espacio a los lados */
+    transition: all 0.3s ease; /* Asegura que todo se mueva al mismo tiempo */
+}
+
+/* 2. Tu Contenedor de Usuarios */
+.contenedor-usuarios {
+    background-color: white;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    
+    /* MODIFICACIONES PARA SINCRONIZARLO CON EL DASHBOARD */
+    width: 100%;             /* Siempre ocupa el 100% del padre */
+    max-width: 1600px;       /* Mantiene el límite de tamaño */
+    margin: 20px 0 20px 0;   /* Quitamos el 'auto' que causa ese salto o margen extraño */
+    
+    box-sizing: border-box;  /* Imprescindible: evita que el padding sume espacio extra al ancho */
+    transition: all 0.3s ease; 
+}
+/* Layout a dos columnas con Grid */
+.grid-usuarios {
+    display: grid;
+    /* Usamos minmax para que el formulario no se deforme, pero la tabla crezca libre */
+    grid-template-columns: 350px minmax(0, 1fr); 
+    gap: 32px;
+    align-items: start;
+    width: 100%; /* Esto es vital: debe ocupar todo el espacio del contenedor */
+    transition: all 0.3s ease; /* Para que la animación sea fluida */
+}
+
+/* Estilos de la Cabecera (Tomados de tu diseño) */
+.cabecera-modulo {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecera-modulo h2 {
+    color: var(--dark);
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+/* --- Panel Izquierdo (Formulario) --- */
+.panel-formulario {
+    background-color: var(--light);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.titulo-seccion {
+    color: var(--primary);
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 8px;
+}
+
+/* Inputs Modernos */
+.grupo-input {
+    margin-bottom: 16px;
+}
+
+.grupo-input label {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.input-moderno {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-main);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.input-moderno:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15); /* Resplandor primary */
+}
+
+/* --- Panel Derecho (Tabla) --- */
+/* Tabla Moderna (Tomada de tu diseño) */
+.tabla-moderna {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tabla-moderna th {
+    background-color: #f9fafb;
+    color: var(--text-muted);
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+.tabla-moderna td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+.tabla-moderna tbody tr:hover {
+    background-color: var(--light);
+}
+
+/* Etiquetas de Estado Personalizadas */
+.estado-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.estado-activo {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.estado-inactivo {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Botón (Tomado de tu diseño) */
+.btn-guardar {
+    background-color: var(--dark);
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-guardar:hover {
+    background-color: var(--primary);
+}

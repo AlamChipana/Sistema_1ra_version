@@ -1,0 +1,204 @@
+
+
+/* --- TU PALETA DE COLORES CREOTEC (ACTUALIZADA) --- */
+:root {
+    --color-1: #03045E; /* Azul marino oscuro */
+    --color-2: #0077B6; /* Azul medio */
+    --color-3: #00B4D8; /* Azul vibrante */
+    --color-4: #DDF4F9; /* Celeste casi blanco (Bordes de inputs) */
+    --color-5: #F4FBFC; /* Blanco hielo (Fondo del formulario y textos) */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* --- FONDO DEL LOGIN A PANTALLA COMPLETA --- */
+body.login-bg {
+    height: 100vh;
+    width: 100%;
+    background-image: url("../imagenes/creotec.jpg"); 
+    /* 'cover' obliga a la imagen a estirarse para llenar toda la pantalla */
+    background-size: cover; 
+    /* 'center' asegura que, si la imagen se recorta, lo haga por los bordes 
+       y mantenga el centro (lo más importante) siempre a la vista */
+    background-position: center; 
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    /* Bajamos la opacidad a 0.55 (55%) para que la imagen de fondo 
+       se vea mucho más clara, nítida y ocupe con fuerza toda la pantalla */
+    background: linear-gradient(135deg, rgba(16, 17, 102, 0.45), rgba(19, 84, 120, 0.45)); 
+    /* Mantenemos un desenfoque muy mínimo para que el texto del formulario siga siendo legible */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.form-popup {
+    position: relative;
+    z-index: 11;
+    max-width: 720px;
+    width: 100%;
+    background: #fff;
+    border-radius: 12px; 
+    display: flex;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.form-box {
+    display: flex;
+    width: 100%;
+}
+
+/* --- PANEL LATERAL --- */
+.form-details {
+    width: 100%;
+    color: var(--color-5); 
+    max-width: 330px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px;
+    background: var(--color-2); 
+}
+
+.form-details h2 {
+    color: #fff; 
+    margin-bottom: 10px;
+}
+
+/* --- ÁREA DEL FORMULARIO --- */
+.form-content {
+    width: 100%;
+    padding: 35px;
+    background: var(--color-5); /* Ahora es casi blanco, muy limpio */
+}
+
+.form-content h2 {
+    text-align: center;
+    margin-bottom: 29px;
+    color: var(--color-1); 
+}
+
+/* --- INPUTS Y BORDES --- */
+.input-field {
+    position: relative;
+    height: 55px; /* Aumentamos un poco la altura total */
+    width: 100%;
+    margin-top: 25px; /* Aumentamos el espacio entre los campos */
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    outline: none;
+    font-size: 1rem;
+    padding: 10px 15px 0 15px; /* Ajustamos el padding-top a 10px para que el texto no toque el borde */
+    border: 2px solid var(--color-4);
+    border-radius: 6px;
+    color: var(--color-1);
+    transition: 0.2s ease;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--color-2);
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+/* Ajuste fino del movimiento del label */
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+    transform: translateY(-150%); /* Lo movemos un poco más arriba para que no choque */
+    color: var(--color-2);
+    font-size: 0.75rem;
+    background: var(--color-5);
+    padding: 0 5px;
+    font-weight: 600;
+}
+
+/* --- BOTÓN PRINCIPAL --- */
+.form-content button {
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 14px 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 25px 0;
+    background: var(--color-3); 
+    transition: 0.3s ease;
+}
+
+.form-content button:hover {
+    background: var(--color-2); 
+}
+
+/* --- ENLACES INFERIORES --- */
+.bottom-link {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-1);
+}
+
+.bottom-link a {
+    color: var(--color-3);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.bottom-link a:hover {
+    color: var(--color-2);
+    text-decoration: underline;
+}
+
+/* --- LÓGICA DE ANIMACIÓN ENTRE LOGIN Y REGISTRO --- */
+.form-box.signup {
+    display: none;
+}
+
+.form-popup.show-signup .login {
+    display: none;
+}
+
+.form-popup.show-signup .signup {
+    display: flex;
+}
+
+/* --- DISEÑO PARA CELULARES --- */
+@media (max-width: 760px) {
+    .form-popup {
+        width: 95%;
+    }
+    .form-details {
+        display: none;
+    }
+    .form-content {
+        padding: 30px 20px;
+    }
+}

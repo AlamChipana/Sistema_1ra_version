@@ -1,0 +1,493 @@
+/* =========================================================
+   INVENTARIO.CSS - CREOTEC ERP (SISTEMA KARDEX)
+========================================================= */
+
+/* ==========================================
+   1. VARIABLES GLOBALES (PALETA INSTITUCIONAL)
+========================================== */
+:root {
+    /* Paleta Principal Creotec */
+    --dark: #03045E;       /* Azul marino profundo (Textos principales) */
+    --primary: #0077B6;    /* Azul medio (Botones y destacados) */
+    --color-3: #00B4D8;    /* Celeste vibrante (Hovers y detalles) */
+    --border: #DDF4F9;     /* Celeste pastel (Bordes y separadores) */
+    --light: #F4FBFC;      /* Blanco hielo (Fondo general) */
+    
+    /* Colores Semánticos (Alertas y Estados) */
+    --success: #2A9D8F;    /* Verde médico (Óptimo) */
+    --warning: #F4A261;    /* Amarillo/Naranja (Alerta/Bajo) */
+    --danger:  #E76F51;    /* Rojo (Crítico/Error) */
+    
+    /* Textos secundarios */
+    --text-main: #333333;
+    --text-muted: #6C757D;
+}
+
+/* ==========================================
+   2. CONTENEDOR Y CABECERA (ESTRUCTURA BASE)
+========================================== */
+.modulo-contenedor {
+    padding: 25px;
+    font-family: 'Open Sans', -apple-system, sans-serif;
+    color: var(--text-main);
+    background-color: #FFFFFF;
+    min-height: 100vh;
+}
+
+.modulo-cabecera {
+    margin-bottom: 20px;
+}
+
+.titulo-modulo {
+    color: var(--dark);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+.subtitulo-modulo {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0 0 20px 0;
+}
+
+/* ==========================================
+   3. PESTAÑAS PRINCIPALES (ÁREAS)
+========================================== */
+.tabs-areas {
+    display: flex;
+    gap: 5px;
+    border-bottom: 2px solid var(--border);
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px; /* Solapa el borde inferior */
+}
+
+.tab-btn:hover { color: var(--color-3); }
+
+.tab-btn.activo {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+}
+
+/* ==========================================
+   4. SUB-PESTAÑAS (CAMBIO DE TABLAS)
+========================================== */
+.sub-tabs-contenedor {
+    display: inline-flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    padding: 6px;
+    background-color: var(--light);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.sub-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sub-tab-btn:hover {
+    color: var(--primary);
+    background-color: #EBF8FA; /* Resalte muy sutil */
+}
+
+.sub-tab-btn.activo {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 119, 182, 0.2);
+}
+
+/* UTILIDAD CRÍTICA: Ocultar elementos (Tablas / Modales) */
+.oculto {
+    display: none !important;
+}
+
+/* ==========================================
+   5. TARJETAS DE INDICADORES (KPIs)
+========================================== */
+.kpi-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.kpi-card {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--primary);
+    border-radius: 8px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(3, 4, 94, 0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-card.alerta { border-left-color: var(--danger); }
+
+.kpi-titulo {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.kpi-valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 8px 0;
+}
+
+.kpi-detalle { font-size: 0.8rem; color: var(--text-muted); }
+
+/* ==========================================
+   6. CONTROLES AVANZADOS Y BÚSQUEDA
+========================================== */
+.controles-avanzados {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(3, 4, 94, 0.04);
+}
+
+.grupo-filtros, .grupo-acciones {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.input-con-icono {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.icono-busqueda {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.input-control {
+    padding: 10px 12px 10px 35px; /* Espacio para el icono de lupa */
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background-color: var(--light);
+    transition: border 0.3s;
+    min-width: 250px;
+    font-family: inherit;
+}
+
+select.input-control { 
+    padding-left: 12px; /* Selects no llevan icono, reseteamos padding */
+    min-width: 180px; 
+}
+
+.input-control:focus { border-color: var(--primary); }
+
+/* Botones Principales y Secundarios */
+.btn-primario, .btn-secundario {
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-primario {
+    background-color: var(--primary);
+    color: #FFFFFF;
+}
+
+.btn-primario:hover { background-color: var(--color-3); }
+
+.btn-secundario {
+    background-color: #FFFFFF;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.btn-secundario:hover { background-color: var(--light); }
+
+.bg-warning { background-color: var(--warning) !important; color: #FFF; }
+.bg-warning:hover { background-color: #D97706 !important; }
+
+/* ==========================================
+   7. TABLAS DE DATOS
+========================================== */
+.tabla-tarjeta {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(3, 4, 94, 0.05);
+    overflow: hidden;
+}
+
+.tabla-contenedor { overflow-x: auto; }
+
+.tabla-creotec {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-creotec thead th {
+    background-color: var(--dark);
+    color: #FFFFFF;
+    padding: 14px 15px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid var(--primary);
+    white-space: nowrap;
+}
+
+.tabla-creotec tbody td {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+/* Zebra Striping y Hover */
+.tabla-creotec tbody tr:nth-child(even) { background-color: var(--light); }
+.tabla-creotec tbody tr:hover { background-color: #EBF8FA; }
+
+/* Utilidades de texto */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-danger { color: var(--danger) !important; }
+.text-muted { color: var(--text-muted); font-size: 0.8rem; }
+
+/* Elementos visuales internos de la tabla */
+.codigo-item {
+    background-color: var(--border);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+/* Badges (Etiquetas) */
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.badge-success { background-color: rgba(42, 157, 143, 0.15); color: var(--success); }
+.badge-warning { background-color: rgba(244, 162, 97, 0.2); color: #D97706; }
+.badge-danger { background-color: rgba(231, 111, 81, 0.15); color: var(--danger); }
+
+/* Botones de acción en tabla */
+.acciones-fila {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-icono {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.btn-icono:hover { background-color: var(--border); }
+
+/* ==========================================
+   8. PAGINACIÓN
+========================================== */
+.paginacion-contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #FFFFFF;
+    border-top: 1px solid var(--border);
+}
+
+.paginacion-info { color: var(--text-muted); font-size: 0.9rem; }
+
+.paginacion-controles { display: flex; gap: 5px; }
+
+.btn-pag {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--dark);
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-pag:hover { background-color: var(--light); }
+.btn-pag.activo {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    border-color: var(--primary);
+}
+
+/* ==========================================
+   9. VENTANAS MODALES (OVERLAYS Y FORMS)
+========================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(3, 4, 94, 0.5); /* Usa tu --dark con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-contenido {
+    background-color: #FFFFFF;
+    width: 600px; /* Tamaño por defecto */
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-pequeno { width: 450px; } /* Para el modal de consumo */
+
+.modal-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--light);
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-cabecera h3 { margin: 0; color: var(--dark); font-size: 1.2rem; }
+
+.btn-cerrar-modal { 
+    background: none; border: none; font-size: 1.2rem; 
+    cursor: pointer; color: var(--text-muted); transition: 0.2s;
+}
+.btn-cerrar-modal:hover { color: var(--danger); }
+
+.modal-cuerpo { padding: 20px; }
+
+/* Formularios en Modales */
+.form-grupo { margin-bottom: 15px; }
+.form-grupo label { 
+    display: block; font-size: 0.85rem; 
+    font-weight: 600; margin-bottom: 6px; 
+    color: var(--text-muted); 
+}
+.form-grupo .input-control { width: 100%; padding-left: 12px; box-sizing: border-box; } /* Resetea el padding del icono */
+
+.form-fila { display: flex; gap: 15px; }
+.form-fila .form-grupo { flex: 1; }
+
+.modal-pie {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+/* ==========================================
+   10. TEMAS POR ÁREA (IDENTIFICACIÓN VISUAL)
+========================================== */
+
+/* Colores para la pestaña activa dependiendo del área */
+.tab-btn[data-area="todos"].activo { color: var(--primary); border-bottom-color: var(--primary); }
+.tab-btn[data-area="anaplastologia"].activo { color: var(--success); border-bottom-color: var(--success); }
+.tab-btn[data-area="manufactura"].activo { color: var(--primary); border-bottom-color: var(--primary); }
+.tab-btn[data-area="comercial"].activo { color: var(--warning); border-bottom-color: var(--warning); }
+
+/* Tema: VISIÓN GLOBAL (Azul Marino clásico) */
+.tabla-tarjeta.tema-todos { 
+    background-color: #FFFFFF; 
+    border-top: 3px solid var(--primary); 
+}
+.tabla-tarjeta.tema-todos .tabla-creotec thead th { 
+    background-color: var(--dark); 
+}
+
+/* Tema: ANAPLASTOLOGÍA (Verde médico) */
+.tabla-tarjeta.tema-anaplastologia { 
+    background-color: #F2F9F8; 
+    border-top: 3px solid var(--success); 
+}
+.tabla-tarjeta.tema-anaplastologia .tabla-creotec thead th { 
+    background-color: var(--success); 
+    border-bottom-color: #218276; /* Verde oscuro para el borde inferior */
+}
+.tabla-tarjeta.tema-anaplastologia .tabla-creotec tbody tr:nth-child(even) { background-color: rgba(42, 157, 143, 0.05); }
+.tabla-tarjeta.tema-anaplastologia .tabla-creotec tbody tr:hover { background-color: rgba(42, 157, 143, 0.1); }
+
+/* Tema: MANUFACTURA (Azul industrial) */
+.tabla-tarjeta.tema-manufactura { 
+    background-color: #F0F4FA; 
+    border-top: 3px solid var(--primary); 
+}
+.tabla-tarjeta.tema-manufactura .tabla-creotec thead th { 
+    background-color: var(--primary); 
+    border-bottom-color: var(--dark); 
+}
+.tabla-tarjeta.tema-manufactura .tabla-creotec tbody tr:nth-child(even) { background-color: rgba(0, 119, 182, 0.05); }
+.tabla-tarjeta.tema-manufactura .tabla-creotec tbody tr:hover { background-color: rgba(0, 119, 182, 0.1); }
+
+/* Tema: COMERCIAL (Naranja cálido) */
+.tabla-tarjeta.tema-comercial { 
+    background-color: #FFF9F2; 
+    border-top: 3px solid var(--warning); 
+}
+.tabla-tarjeta.tema-comercial .tabla-creotec thead th { 
+    background-color: var(--warning); 
+    border-bottom-color: #D97706; /* Naranja oscuro para el borde inferior */
+    color: #FFFFFF; /* Forzamos el texto blanco para contraste */
+}
+.tabla-tarjeta.tema-comercial .tabla-creotec tbody tr:nth-child(even) { background-color: rgba(244, 162, 97, 0.05); }
+.tabla-tarjeta.tema-comercial .tabla-creotec tbody tr:hover { background-color: rgba(244, 162, 97, 0.1); }

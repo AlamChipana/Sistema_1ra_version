@@ -1,0 +1,422 @@
+/* --- ESTILOS DASHBOARD CREOTEC (BARRA LATERAL OSCURA) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+:root {
+    /* Paleta Institucional Creotec basada en tu Login */
+    --primary-color: #00B4D8;      /* Azul celeste brillante */
+    --panel-color: #F4FBFC;        /* Fondo claro del Dashboard (Blanco hielo) */
+    --text-color: #03045E;         /* Azul oscuro para textos del panel */
+    --border-color: #DDF4F9;       /* Bordes claros */
+    --toggle-color: #0077B6;       /* Color del switch */
+    
+    /* NUEVA VARIABLE: Color oscuro oficial del login para la barra lateral */
+    --sidebar-bg-color: #03045E;   
+    --sidebar-text-color: #FFF;    /* Texto blanco para resaltar en fondo oscuro */
+    --sidebar-hover-color: #00B4D8; /* Celeste al pasar el mouse */
+
+    /* Colores para las tarjetas */
+    --box1-color: #90E0EF;
+    --box2-color: #CAF0F8;
+    --box3-color: #DDF4F9;
+    
+    --title-icon-color: #fff;
+    --tran-05: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    transition: var(--tran-05);
+}
+
+body.dark {
+    /* Paleta para el Modo Oscuro */
+    --primary-color: #03045E;
+    --panel-color: #023E8A;
+    --text-color: #FFF;
+    --border-color: #0077B6;
+    --toggle-color: #FFF;
+    --box1-color: #0077B6;
+    --box2-color: #0077B6;
+    --box3-color: #0077B6;
+    --title-icon-color: #FFF;
+    --sidebar-bg-color: #011627; /* Un tono aún más oscuro en la noche */
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #03045E;
+}
+
+/* ==========================================================================
+   BARRA LATERAL (NAV) - CONFIGURACIÓN OSCURA PREMIUM
+   ========================================================================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background-color: var(--sidebar-bg-color); /* CAMBIO: Ahora usa tu azul marino oscuro */
+    border-right: 1px solid var(--border-color);
+    transition: var(--tran-05);
+}
+nav.close {
+    width: 73px;
+}
+nav .logo-name {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea sutil divisoria */
+    padding-bottom: 15px;
+}
+nav .logo-image {
+    display: flex;
+    justify-content: center;
+    min-width: 45px;
+}
+nav .logo-image img {
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+nav .logo-name .logo_name {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--sidebar-text-color); /* CAMBIO: Texto del logo en blanco */
+    margin-left: 14px;
+    transition: var(--tran-05);
+}
+nav.close .logo_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+nav .menu-items {
+    margin-top: 20px;
+    height: calc(100% - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-items li {
+    list-style: none;
+}
+.menu-items li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Puntito de selección al pasar el mouse */
+.nav-links li a:hover:before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--sidebar-hover-color);
+}
+
+/* Configuración de íconos y textos dentro de la barra oscura */
+.menu-items li a .icono-local {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* TRUCO PRO: Convierte tus íconos oscuros en blanco de forma automática */
+    transition: var(--tran-03);
+}
+
+.menu-items li a .link-name,
+.menu-items li a .mode-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--sidebar-text-color); /* CAMBIO: Textos del menú en blanco */
+    transition: var(--tran-05);
+}
+
+nav.close li a .link-name,
+nav.close li a .mode-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Efecto Hover: Cambia a celeste cuando pasas el mouse */
+.nav-links li a:hover .link-name {
+    color: var(--sidebar-hover-color);
+}
+.nav-links li a:hover .icono-local {
+    /* Cambia el filtro para que el ícono se ilumine en celeste en el hover */
+    filter: invert(64%) sepia(84%) saturate(2035%) 'hue-rotate'(157deg) brightness(97%) contrast(101%);
+}
+
+.menu-items .logout-mode {
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea sutil superior para salir */
+}
+.menu-items .mode {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.menu-items .mode-toggle {
+    position: absolute;
+    right: 14px;
+    height: 50px;
+    min-width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.mode-toggle .switch {
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+}
+.switch:before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 15px;
+    width: 15px;
+    background-color: #FFF;
+    border-radius: 50%;
+    transition: var(--tran-03);
+}
+body.dark .switch:before {
+    left: 20px;
+}
+
+
+/* area de inicio*/
+/* Estilos dinámicos para las áreas e introducción */
+.mivisi-card, .sistema-proposito, .area-detail-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto sutil de elevación en las tarjetas al pasar el cursor */
+.mivisi-card:hover, .sistema-proposito:hover, .area-detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(3, 4, 94, 0.08) !important;
+}
+
+/* Formato limpio para la lista de viñetas en el propósito */
+.sistema-proposito p + p {
+    margin-top: 10px;
+}
+
+
+/* ==========================================================================
+   ÁREA CONTENEDORA DEL DASHBOARD (LADO DERECHO)
+   ========================================================================== */
+.dashboard {
+    position: relative;
+    left: 250px;
+    background-color: var(--panel-color);
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    transition: var(--tran-05);
+}
+nav.close ~ .dashboard {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+.dashboard .top {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+    transition: var(--tran-05);
+    z-index: 10;
+    border-bottom: 1px solid var(--border-color);
+}
+nav.close ~ .dashboard .top {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+.dashboard .top .sidebar-toggle {
+    cursor: pointer;
+    width: 26px;
+    filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.1));
+}
+.dashboard .top .search-box {
+    position: relative;
+    height: 45px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 30px;
+}
+.top .search-box input {
+    position: absolute;
+    border: 1px solid var(--border-color);
+    background-color: #FFF;
+    padding: 0 25px 0 50px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+}
+.top .search-box .icono-busqueda {
+    position: absolute;
+    left: 15px;
+    width: 22px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.top img {
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+}
+.dashboard .dash-content {
+    padding-top: 50px;
+}
+.dash-content .title {
+    display: flex;
+    align-items: center;
+    margin: 60px 0 30px 0;
+}
+.dash-content .title .icono-titulo {
+    width: 35px;
+    height: 35px;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    padding: 5px;
+    object-fit: contain;
+}
+.dash-content .title .text {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+
+
+/* ==========================================
+   PERFIL DE USUARIO EN LA BARRA SUPERIOR (AJUSTADO)
+========================================== */
+.top .perfil-usuario {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important; /* <-- Aumentamos la separación (antes era 12px) */
+}
+
+.top .perfil-usuario .nombre-perfil {
+    font-size: 19px !important; /* <-- Letra más grande (antes era 16px) */
+    font-weight: 900 !important; /* <-- Letra mucho más gruesa (antes era 700) */
+    color: #03045E !important; 
+    text-transform: capitalize !important;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.top .perfil-usuario .profile-pic {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid #0077B6 !important; 
+}
+
+
+/* TARJETAS DE RESUMEN (BOXES) */
+.dash-content .boxes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.dash-content .boxes .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    width: calc(100% / 3 - 15px);
+    padding: 20px;
+    background-color: var(--box1-color);
+    transition: var(--tran-05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.dash-content .boxes .box .icono-caja {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 8px;
+    object-fit: contain;
+}
+.boxes .box .text {
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+.boxes .box .number {
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.boxes .box.box2 { background-color: var(--box2-color); }
+.boxes .box.box3 { background-color: var(--box3-color); }
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1000px) {
+    nav { width: 73px; }
+    nav.close { width: 250px; }
+    nav .logo_name { opacity: 0; pointer-events: none; }
+    nav.close .logo_name { opacity: 1; pointer-events: auto; }
+    nav li a .link-name { opacity: 0; pointer-events: none; }
+    nav.close li a .link-name { opacity: 1; pointer-events: auto; }
+    nav ~ .dashboard { left: 73px; width: calc(100% - 73px); }
+    nav.close ~ .dashboard { left: 250px; width: calc(100% - 250px); }
+    nav ~ .dashboard .top { left: 73px; width: calc(100% - 73px); }
+    nav.close ~ .dashboard .top { left: 250px; width: calc(100% - 250px); }
+}
+@media (max-width: 780px) {
+    .dash-content .boxes .box { width: calc(100% / 2 - 15px); margin-top: 15px; }
+}
+@media (max-width: 560px) {
+    .dash-content .boxes .box { width: 100%; }
+}
+@media (max-width: 400px) {
+    nav { width: 0px; }
+    nav.close { width: 73px; }
+    nav ~ .dashboard { left: 0; width: 100%; }
+    nav.close ~ .dashboard { left: 73px; width: calc(100% - 73px); }
+    nav ~ .dashboard .top { left: 0; width: 100%; }
+}

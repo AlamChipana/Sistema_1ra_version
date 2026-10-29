@@ -1,0 +1,314 @@
+/* ==========================================
+   PALETA DE COLORES CREOTEC
+   ========================================== */
+:root {
+    --color-1: #03045E; /* Azul marino oscuro - Títulos y textos principales */
+    --color-2: #0077B6; /* Azul medio - Botones y encabezados de tabla */
+    --color-3: #00B4D8; /* Azul vibrante - Hover de botones y acentos */
+    --color-4: #DDF4F9; /* Celeste casi blanco - Bordes */
+    --color-5: #F4FBFC; /* Blanco hielo - Fondos de inputs/tarjetas */
+    
+    /* Colores semánticos para el cronómetro (mantienen el contraste) */
+    --estado-listo: #f39c12; 
+    --estado-activo: #27ae60; 
+    --estado-pausa: #e67e22; 
+    --estado-completado: var(--color-2);
+    
+    --borde-radio: 12px; /* Mismo radio que tu form-popup */
+    --sombra-tarjeta: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra suave para dashboard */
+}
+
+/* ==========================================
+   ESTILOS GENERALES
+   ========================================== */
+.contenedor-principal {
+    max-width: 1000px;
+    
+    /* Agrega esta línea para empujar el contenido hacia abajo. 
+       Juega con el número (30px, 50px, 80px) hasta que quede perfecto */
+    margin-top: 40px; 
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    width: 100%;
+    font-family: "Open Sans", sans-serif;
+    color: var(--color-1);
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--color-4);
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--color-1);
+    font-weight: 700;
+}
+
+.info-usuario p {
+    font-weight: 600;
+    color: var(--color-2);
+    background: var(--color-4);
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 0;
+}
+
+/* ==========================================
+   TARJETAS Y PANELES
+   ========================================== */
+.tarjeta {
+    background-color: #ffffff;
+    border-radius: var(--borde-radio);
+    padding: 30px;
+    box-shadow: var(--sombra-tarjeta);
+    margin-bottom: 25px;
+    border: 1px solid var(--color-4);
+}
+
+.tarjeta h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--color-1);
+    border-bottom: 2px solid var(--color-4);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.separador {
+    border: none;
+    height: 2px;
+    background-color: var(--color-4);
+    margin: 35px 0;
+}
+
+/* ==========================================
+   FORMULARIOS Y GRIDS
+   ========================================== */
+.formulario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-1);
+}
+
+.grupo-input input,
+.grupo-input select,
+.grupo-input textarea {
+    padding: 12px;
+    border: 2px solid var(--color-4);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--color-5);
+    color: var(--color-1);
+    transition: all 0.3s ease;
+    font-family: "Open Sans", sans-serif;
+}
+
+.grupo-input input:focus,
+.grupo-input select:focus,
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: var(--color-3);
+    background-color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 180, 216, 0.2);
+}
+
+/* ==========================================
+   BOTONES
+   ========================================== */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Open Sans", sans-serif;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(50%);
+}
+
+.btn-primario, .btn-guardar {
+    background-color: var(--color-2);
+    color: #ffffff;
+}
+
+.btn-primario:hover:not(:disabled), 
+.btn-guardar:hover:not(:disabled) {
+    background-color: var(--color-3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 180, 216, 0.3);
+}
+
+.btn-guardar {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+
+/* ==========================================
+   VENTANA EMERGENTE (MODAL) PARA DETALLES
+   ========================================== */
+.modal-oculto {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 4, 94, 0.6); /* Tu --color-1 con transparencia */
+    backdrop-filter: blur(3px); /* Desenfoque elegante */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-activo {
+    display: flex; /* Cambia a flex para centrar el contenido */
+}
+
+.modal-contenido {
+    background-color: var(--color-5);
+    padding: 30px;
+    border-radius: var(--borde-radio);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    border: 2px solid var(--color-4);
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-1);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cerrar-modal:hover {
+    color: #e74c3c;
+}
+
+
+/* ==========================================
+   CONTROLES DE TIEMPO (CRONÓMETRO)
+   ========================================== */
+.panel-controles {
+    text-align: center;
+    background-color: var(--color-5);
+    padding: 30px;
+    border-radius: var(--borde-radio);
+    border: 2px dashed var(--color-4);
+    margin: 25px 0;
+}
+
+#cronometro-display {
+    font-size: 4rem;
+    font-family: monospace;
+    font-weight: bold;
+    margin: 20px 0;
+    color: var(--color-1);
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.botones-control {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-iniciar { background-color: var(--estado-activo); color: white; }
+.btn-pausar { background-color: var(--estado-pausa); color: white; }
+.btn-finalizar { background-color: var(--color-1); color: white; }
+
+.btn-iniciar:hover:not(:disabled) { background-color: #219653; }
+.btn-pausar:hover:not(:disabled) { background-color: #d35400; }
+.btn-finalizar:hover:not(:disabled) { background-color: #020344; }
+
+/* ==========================================
+   ETIQUETAS DE ESTADO (BADGES)
+   ========================================== */
+.badge-estado {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.badge-estado.listo { background-color: var(--estado-listo); }
+.badge-estado.activo { background-color: var(--estado-activo); }
+.badge-estado.pausado { background-color: var(--estado-pausa); }
+
+/* ==========================================
+   TABLA DE CONFIGURACIÓN
+   ========================================== */
+.tabla-contenedor {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-4);
+}
+
+th {
+    background-color: var(--color-2);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:hover td {
+    background-color: var(--color-5);
+}
+
+.texto-centro {
+    text-align: center;
+    color: var(--color-1);
+    font-style: italic;
+}
